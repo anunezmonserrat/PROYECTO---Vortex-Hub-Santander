@@ -21,12 +21,28 @@ setInterval(() => {
 // --- LÓGICA DEL FORMULARIO ---
 document.getElementById('validar-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const email = this.querySelector('input').value;
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
     
-    // Aquí puedes integrar con Formspree o tu backend
-    console.log("Email registrado:", email);
-    
-    this.innerHTML = "<h3>¡GG! Te hemos añadido a la lista. Revisa tu email.</h3>";
+    fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            this.innerHTML = "<h3>¡GG! Te hemos añadido a la lista. Revisa tu email.</h3>";
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al enviar la solicitud.');
+    });
 });
 
 // Navbar efecto scroll
