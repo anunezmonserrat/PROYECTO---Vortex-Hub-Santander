@@ -18,33 +18,6 @@ setInterval(() => {
     showSlide(currentSlide + 1);
 }, 5000);
 
-// --- LÓGICA DEL FORMULARIO ---
-document.getElementById('validar-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    
-    fetch('/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name, email })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            this.innerHTML = "<h3>¡GG! Te hemos añadido a la lista. Revisa tu email.</h3>";
-        } else {
-            alert('Error: ' + data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error al enviar la solicitud.');
-    });
-});
-
 // Navbar efecto scroll
 window.addEventListener('scroll', function() {
     const nav = document.querySelector('.navbar');
