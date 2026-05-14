@@ -43,3 +43,4 @@ exports.handler = async (event, context) => {
         };
     }
 };
+// Este código es una función de Netlify que maneja el registro de usuarios en Brevo. Asegúrate de configurar la variable de entorno BREVO_API_KEY en Netlify para que funcione correctamente.
