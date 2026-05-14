@@ -2,5 +2,8 @@
   "name": "vortex-hub-landing",
   "version": "1.0.0",
   "description": "Landing page estática para Vortex Hub, lista para deploy en Netlify.",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@getbrevo/brevo": "^1.0.0"
+  }
 }

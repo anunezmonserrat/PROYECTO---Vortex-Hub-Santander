@@ -2,4 +2,9 @@
   publish = "."
 
 [functions]
-  node_bundle = true
+  directory = ".netlify/functions"
+
+[functions.node_bundle]
+  external_node_modules = [
+    "@getbrevo/brevo"
+  ]
