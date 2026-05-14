@@ -1,10 +1,5 @@
 [build]
-  # Directorio donde están tus archivos HTML, CSS y JS
   publish = "."
 
-  # Directorio donde Netlify buscará tus funciones de backend
-  functions = "netlify/functions"
-
 [functions]
-  # Esto asegura que Netlify instale las dependencias (como @getbrevo/brevo)
   node_bundle = true
