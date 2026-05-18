@@ -13,6 +13,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--bg);
     color: var(--text);
+    padding-bottom: 120px; /* Espacio para el footer fijo */
 }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
@@ -75,6 +76,112 @@ body {
     opacity: 0.8;
 }
 
+.site-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(10, 10, 12, 0.98);
+    padding: 25px 20px;
+    border-top: 1px solid rgba(0, 242, 255, 0.12);
+    margin-top: 0;
+    z-index: 999;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-container span {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.social-links a {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    background: rgba(0, 242, 255, 0.18);
+    color: #00f2ff;
+}
+
+/* Grid de Estadísticas */
+.stats-highlight {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: center;
+    border: 1px dashed #7000ff;
+}
+.stat-num {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #00f2ff;
+}
+.stat-desc {
+    color: #888;
+    font-size: 14px;
+}
+/* Columnas del Ecosistema */
+.vortex-ecosystem {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+.eco-card {
+    background: #111114;
+    border: 1px solid #1a1a1f;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.eco-card:hover {
+    border-color: #00f2ff;
+    transform: translateY(-5px);
+}
+.eco-icon {
+    font-size: 35px;
+    color: #7000ff;
+    margin-bottom: 20px;
+}
+.eco-card h4 {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.eco-card p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.6;
+}
 /* SLIDER */
 .hero-slider {
     position: relative;
@@ -142,6 +249,13 @@ h2 {
     border-radius: 15px;
     text-align: center;
     border: 1px solid #333;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 40px rgba(0, 242, 255, 0.12);
+    border-color: rgba(0, 242, 255, 0.35);
 }
 
 .price-card.featured { border-color: var(--secondary); transform: scale(1.05); }
@@ -194,4 +308,181 @@ button {
 @media (max-width: 768px) {
     .nav-menu { display: none; } /* Deberías añadir un menú hamburguesa luego */
     .slide-content h1 { font-size: 2rem; }
+}
+
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden !important; /* Muerte definitiva a las barras de este contenedor */
+    border: 1px solid #00f2ff;
+    border-radius: 8px;
+}
+.video-responsive iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden !important;
+}
+/* ESTILOS NUEVA SECCIÓN VORTEX */
+.section-vortex {
+    background-color: #0a0a0c;
+    padding: 60px 20px;
+    font-family: 'Roboto', sans-serif;
+}
+.vortex-grid-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.vortex-card {
+    background: #111114;
+    border: 1px solid #1a1a1f;
+    border-radius: 12px;
+    padding: 40px;
+}
+.main-intro h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00f2ff;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+.main-intro h3 {
+    color: #7000ff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.main-intro p {
+    color: #ccc;
+    line-height: 1.7;
+    font-size: 16px;
+}
+/* Grid de Estadísticas */
+.stats-highlight {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: center;
+    border: 1px dashed #7000ff;
+}
+.stat-num {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #00f2ff;
+}
+.stat-desc {
+    color: #888;
+    font-size: 14px;
+}
+/* Columnas del Ecosistema */
+.vortex-ecosystem {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+.eco-card {
+    background: #111114;
+    border: 1px solid #1a1a1f;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+/* ==================== Estilos embed de la presentación ==================== */
+/* Copiado desde presentacion.html para incrustar la presentación directamente */
+/* CONFIGURACIÓN BASE - Corrección de Desbordamientos */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body.presentacion-embed { 
+    background-color: #050505; 
+    color: #f5f5f5; 
+    font-family: 'Roboto', sans-serif; 
+}
+
+.slide-container {
+    width: 100%;
+    max-width: 1280px; 
+    min-height: 650px;
+    background-color: #0a0a0c;
+    border: 1px solid #1a1a1f;
+    border-radius: 8px;
+    position: relative;
+    display: none; /* Controlado por JS */
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+.slide-container.active { display:flex !important; animation: fadeIn 0.3s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.nav-btn { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(17,17,20,0.9); border: 1px solid #2a2a35; color: #fff; width:55px; height:55px; border-radius:50%; cursor:pointer; z-index:100; display:flex; align-items:center; justify-content:center; font-size:18px; transition: all 0.2s ease; }
+.nav-btn:hover { border-color: #00f2ff; color: #00f2ff; box-shadow: 0 0 15px rgba(0,242,255,0.4); }
+#prevBtn { left: 20px; }
+#nextBtn { right: 20px; }
+
+.slide-counter { position:absolute; bottom:25px; right:35px; font-family: 'Orbitron', sans-serif; color:#444; font-size:14px; letter-spacing:2px; z-index:10; }
+.slide-counter span { color: #00f2ff; font-weight: bold; }
+
+.slide-container::before { content: ''; position: absolute; top: -10%; right: -10%; width:45%; height:45%; background: radial-gradient(circle, rgba(0,242,255,0.03) 0%, transparent 70%); pointer-events:none; z-index:0; }
+.slide-container::after { content: ''; position: absolute; bottom: -10%; left: -10%; width:45%; height:45%; background: radial-gradient(circle, rgba(112,0,255,0.03) 0%, transparent 70%); pointer-events:none; z-index:0; }
+
+h1, h2, h3, h4 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; z-index:2; }
+h1 { font-size: 70px; color: #fff; letter-spacing: 2px; }
+h1 span { color: #00f2ff; text-shadow: 0 0 10px rgba(0,242,255,0.3); }
+
+.slide-title { font-size: 34px; color: #00f2ff; margin-bottom: 35px; border-left:5px solid #7000ff; padding-left:20px; letter-spacing:1px; }
+
+p, li { font-size:17px; line-height:1.6; color:#b3b3b3; font-weight:300; z-index:2; }
+strong { color:#fff; font-weight:700; }
+
+.content-area { width:100%; z-index:2; }
+.two-column { display:grid; grid-template-columns: 1.1fr 0.9fr; gap:40px; width:100%; align-items:center; }
+
+.title-layout { text-align:center; width:100%; margin:auto; }
+.title-layout .subtitle { font-size:20px; color:#888; letter-spacing:6px; margin-top:15px; }
+
+.highlight-numbers-layout { display:grid; grid-template-columns:1fr 1.2fr; gap:40px; align-items:center; width:100%; }
+.number-box { text-align:center; }
+.number { font-size:130px; font-weight:700; color:#00f2ff; line-height:1; }
+
+.tiled-content { display:grid; grid-template-columns: repeat(3,1fr); gap:25px; width:100%; }
+.tile { background:#111114; border:1px solid #1a1a1f; padding:30px; border-radius:8px; text-align:center; }
+.tile .icon { font-size:40px; color:#7000ff; margin-bottom:20px; }
+.tile h3 { font-size:20px; margin-bottom:12px; color:#f5f5f5; }
+
+.image-wrapper { border-radius:8px; overflow:hidden; border:1px solid rgba(0,242,255,0.15); height:380px; width:100%; }
+.image-wrapper img { width:100%; height:100%; object-fit:cover; }
+
+.bleed-grid { display:grid; grid-template-columns: 1fr 1fr; width:100%; gap:40px; align-items:center; }
+
+@media (max-width:1024px) {
+    .two-column, .bleed-grid, .tiled-content, .highlight-numbers-layout { grid-template-columns: 1fr; gap:30px; }
+    .image-wrapper { height:250px; }
+    .slide-container { padding: 40px 30px; height:auto; }
+    .number { font-size:90px; }
+}
+
+/* Fin estilos embed de presentación */
+    transition: all 0.3s ease;
+}
+.eco-card:hover {
+    border-color: #00f2ff;
+    transform: translateY(-5px);
+}
+.eco-icon {
+    font-size: 35px;
+    color: #7000ff;
+    margin-bottom: 20px;
+}
+.eco-card h4 {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.eco-card p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.6;
 }

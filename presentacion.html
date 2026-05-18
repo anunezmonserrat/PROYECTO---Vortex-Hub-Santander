@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortex Hub Santander | Pitch Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CONFIGURACIÓN BASE - Corrección de Desbordamientos */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            body { 
+                background-color: #050505; 
+                color: #f5f5f5; 
+                font-family: 'Roboto', sans-serif; 
+                display: flex; 
+                justify-content: center;
+                align-items: center; 
+                min-height: 100vh;
+                padding: 40px 20px;
+                overflow: hidden !important; /* Oculta barras de scroll tanto horizontales como verticales en la slide */
+            }
+        }
+        
+        /* Contenedor elástico pero con topes para evitar bugs visuales */
+        .slide-container {
+            width: 100%;
+            max-width: 1280px; 
+            min-height: 650px;
+            background-color: #0a0a0c;
+            border: 1px solid #1a1a1f;
+            border-radius: 8px;
+            position: relative;
+            display: none; /* Controlado por JS */
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        /* Clase activa limpia sin saltos de escala */
+        .slide-container.active {
+            display: flex !important;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* BOTONES DE NAVEGACIÓN CORREGIDOS (Se mantienen en sus sitios) */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(17, 17, 20, 0.9);
+            border: 1px solid #2a2a35;
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s ease;
+        }
+        .nav-btn:hover {
+            border-color: #00f2ff;
+            color: #00f2ff;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+        #prevBtn { left: 20px; }
+        #nextBtn { right: 20px; }
+
+        .slide-counter {
+            position: absolute;
+            bottom: 25px;
+            right: 35px;
+            font-family: 'Orbitron', sans-serif;
+            color: #444;
+            font-size: 14px;
+            letter-spacing: 2px;
+            z-index: 10;
+        }
+        .slide-counter span { color: #00f2ff; font-weight: bold; }
+
+        /* EFECTOS DE FONDO */
+        .slide-container::before {
+            content: ''; position: absolute; top: -10%; right: -10%; width: 45%; height: 45%;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.03) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
+        }
+        .slide-container::after {
+            content: ''; position: absolute; bottom: -10%; left: -10%; width: 45%; height: 45%;
+            background: radial-gradient(circle, rgba(112, 0, 255, 0.03) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
+        }
+
+        /* TIPOGRAFÍAS */
+        h1, h2, h3, h4 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; z-index: 2; }
+        h1 { font-size: 70px; color: #fff; letter-spacing: 2px; }
+        h1 span { color: #00f2ff; text-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
+        
+        .slide-title { 
+            font-size: 34px; color: #00f2ff; margin-bottom: 35px; 
+            border-left: 5px solid #7000ff; padding-left: 20px; letter-spacing: 1px;
+        }
+        
+        p, li { font-size: 17px; line-height: 1.6; color: #b3b3b3; font-weight: 300; z-index: 2; }
+        strong { color: #fff; font-weight: 700; }
+
+        /* REJILLAS Y CONTENEDORES INTERNOS AISLADOS (EVITA MEZCLAS) */
+        .content-area { width: 100%; z-index: 2; }
+        .two-column { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; width: 100%; align-items: center; }
+        
+        .title-layout { text-align: center; width: 100%; margin: auto; }
+        .title-layout .subtitle { font-size: 20px; color: #888; letter-spacing: 6px; margin-top: 15px; }
+
+        .highlight-numbers-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; width: 100%; }
+        .number-box { text-align: center; }
+        .number { font-size: 130px; font-weight: 700; color: #00f2ff; line-height: 1; }
+
+        .tiled-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; width: 100%; }
+        .tile { background: #111114; border: 1px solid #1a1a1f; padding: 30px; border-radius: 8px; text-align: center; }
+        .tile .icon { font-size: 40px; color: #7000ff; margin-bottom: 20px; }
+        .tile h3 { font-size: 20px; margin-bottom: 12px; color: #f5f5f5; }
+
+        .image-wrapper { border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 242, 255, 0.15); height: 380px; width: 100%; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Corrección drástica del diseño partido lateral */
+        .bleed-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 40px; align-items: center; }
+
+        /* TABLAS */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background: #141419; color: #00f2ff; font-family: 'Orbitron'; padding: 18px; text-align: left; font-size: 15px; border-bottom: 2px solid #7000ff; }
+        td { padding: 16px; border-bottom: 1px solid #1a1a1f; color: #e0e0e0; font-size: 16px; }
+        tr:nth-child(even) { background: #0c0c0e; }
+
+        /* GRÁFICOS SVG */
+        .chart-container { width: 100%; height: 100%; }
+        .area-chart-svg { width: 100%; height: 320px; background: #0d0d11; border: 1px solid #1a1a1f; border-radius: 6px; padding: 15px; }
+        .area-fill { fill: url(#chart-gradient); opacity: 0.15; }
+        .line-stroke { fill: none; stroke: #00f2ff; stroke-width: 4; }
+
+        /* RESPONSIVE AUTOMÁTICO */
+        @media (max-width: 1024px) {
+            .two-column, .bleed-grid, .tiled-content, .highlight-numbers-layout { grid-template-columns: 1fr; gap: 30px; }
+            .image-wrapper { height: 250px; }
+            .slide-container { padding: 40px 30px; height: auto; }
+            .number { font-size: 90px; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="nav-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+<button class="nav-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+
+<div class="slide-container active">
+    <div class="title-layout">
+        <h1>VORTEX<span>HUB</span></h1>
+        <p class="subtitle">Santander | Estrategia • Rendimiento • Comunidad</p>
+    </div>
+    <div class="slide-counter"><span>1</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <div class="title-layout">
+        <h2 style="font-size: 45px; color: #f5f5f5;">Nuestra <span style="color: #00f2ff;">Misión</span></h2>
+        <hr style="width: 100px; height: 4px; background: #7000ff; border: none; margin: 25px auto;">
+        <p style="max-width: 800px; margin: auto; font-size: 20px; color: #d0d0d5; line-height: 1.7;">
+            Vortex Hub nace de la necesidad de conectar el talento universitario de Cantabria con las exigencias del alto rendimiento gaming. No somos simplemente un ciber con ordenadores; somos la central de acceso al ecosistema tecnológico del norte de España.
+        </p>
+    </div>
+    <div class="slide-counter"><span>2</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">Hardware de Élite</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 19px; margin-bottom: 20px;">Infraestructura física diseñada al milímetro para eliminar latencias:</p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px;">
+                    <li><i class="fa-solid fa-microchip" style="color:#00f2ff; margin-right: 12px;"></i><strong>Nvidia RTX 4080:</strong> Potencia gráfica sin caídas de FPS.</li>
+                    <li><i class="fa-solid fa-bolt" style="color:#00f2ff; margin-right: 12px;"></i><strong>Monitores 240Hz / 360Hz:</strong> Fluidez competitiva total.</li>
+                    <li><i class="fa-solid fa-keyboard" style="color:#00f2ff; margin-right: 12px;"></i><strong>Periféricos Premium:</strong> Tiempos de respuesta óptimos.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600" alt="Setup">
+            </div>
+        </div>
+    </div>
+    <div class="slide-counter"><span>3</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">Conectividad de Ultra Banda</h2>
+    <div class="content-area">
+        <div class="highlight-numbers-layout">
+            <div class="number-box">
+                <div class="number">0<span style="font-size: 40px; color: #7000ff;">ms</span></div>
+                <div class="number-label">Latencia de Red Interna</div>
+            </div>
+            <div>
+                <h3 style="color: #fff; margin-bottom: 15px; font-size: 22px;">Infraestructura Profesional</h3>
+                <p style="margin-bottom: 12px;">Líneas simétricas de grado empresarial con balanceo de carga optimizado y priorización de paquetes para eSports (QoS).</p>
+                <p>En nuestra arena el lag no existe; las partidas se disputan bajo condiciones idénticas a las de un torneo presencial profesional.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-counter"><span>4</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">Infraestructura Digital Integrada</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Web Automática</h3>
+                <p>Altas inmediatas integradas desde la web con base de datos en la nube para agilizar el mostrador.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3>Brevo Engine</h3>
+                <p>Envíos automatizados con los códigos promocionales para el canal <strong>#🔥-canjea-tu-hora</strong>.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-brands fa-discord"></i></div>
+                <h3>Discord Hub</h3>
+                <p>Comunidad activa con herramientas automatizadas de búsqueda en <strong>#⚡-partida-ahora</strong>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-counter"><span>5</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <div class="content-area">
+        <div class="bleed-grid">
+            <div>
+                <h2 class="slide-title" style="margin-bottom: 25px;">El Nodo Físico</h2>
+                <h3 style="color: #7000ff; margin-bottom: 15px; font-size: 20px;">Santander, Cantabria</h3>
+                <p style="margin-bottom: 15px;">Ubicados estratégicamente para dar soporte tanto al centro urbano como a toda la comunidad estudiantil de la Universidad de Cantabria.</p>
+                <p>Un espacio climatizado, ergonómico y diseñado estructuralmente para emular el despliegue de las arenas competitivas internacionales.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600" alt="Santander">
+            </div>
+        </div>
+    </div>
+    <div class="slide-counter"><span>6</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">Pilares Operativos del Espacio</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile" style="padding: 15px; background: transparent; border: none;">
+                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=400" alt="1"></div>
+                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Torneos de Comunidad</h4>
+            </div>
+            <div class="tile" style="padding: 15px; background: transparent; border: none;">
+                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=400" alt="2"></div>
+                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Entrenamiento de Clubes</h4>
+            </div>
+            <div class="tile" style="padding: 15px; background: transparent; border: none;">
+                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400" alt="3"></div>
+                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Desarrollo Universitario</h4>
+            </div>
+        </div>
+    </div>
+    <div class="slide-counter"><span>7</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">Análisis de Infraestructura Física</h2>
+    <div class="content-area">
+        <table>
+            <thead>
+                <tr>
+                    <th>Línea de Hardware</th>
+                    <th>Configuración Estándar Mercado</th>
+                    <th>Configuración de Élite (Vortex)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Procesamiento Gráfico (GPU)</td>
+                    <td>Nvidia RTX 4060 Ti / Rendimiento Medio</td>
+                    <td><strong>Nvidia RTX 4080 / 4090 Dedicated</strong></td>
+                </tr>
+                <tr>
+                    <td>Tasa de Refresco Visual</td>
+                    <td>144Hz Paneles IPS Tradicionales</td>
+                    <td><strong>240Hz a 360Hz Paneles OLED de Competición</strong></td>
+                </tr>
+                <tr>
+                    <td>Asientos y Ergonomía</td>
+                    <td>Sillas de Oficina Convencionales</td>
+                    <td><strong>Sillas Gaming Ergonómicas Lumbar Pro</strong></td>
+                </tr>
+                <tr>
+                    <td>Ancho de Banda Prioritario</td>
+                    <td>Red Compartida Doméstica Comercial</td>
+                    <td><strong>Fibra Dedicada Simétrica con QoS Activo</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="slide-counter"><span>8</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">Mercado de Esports en España (Proyección)</h2>
+    <div class="content-area">
+        <div class="chart-container">
+            <svg class="area-chart-svg" viewBox="0 0 1000 320">
+                <defs>
+                    <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00f2ff" />
+                        <stop offset="100%" stop-color="#7000ff" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+                <path class="area-fill" d="M 50,260 L 220,220 L 410,180 L 600,160 L 780,100 L 950,40 L 950,280 L 50,280 Z" />
+                <polyline class="line-stroke" points="50,260 220,220 410,180 600,160 780,100 950,40" />
+                <text x="50" y="300" fill="#666" font-family='Orbitron' font-size='14'>2024 (143M€)</text>
+                <text x="900" y="300" fill="#00f2ff" font-family='Orbitron' font-size='14'>2032 (242M€)</text>
+                <line x1="50" y1="280" x2="950" y2="280" stroke="#1a1a1f" stroke-width="2"/>
+            </svg>
+            <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #888;">Crecimiento anual compuesto proyectado (CAGR) del 6.8% en el sector gaming.</p>
+        </div>
+    </div>
+    <div class="slide-counter"><span>9</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <h2 class="slide-title">Segmentación Estratégica del Target</h2>
+    <div class="content-area">
+        <div class="two-column">
+             <div style="width: 280px; height: 280px; border-radius: 50%; background: conic-gradient(#7000ff 0% 45%, #00f2ff 45% 75%, #1c1c24 75% 100%); margin: auto; position: relative;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; height: 180px; background: #0a0a0c; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-family:'Orbitron'; font-size: 16px; color: #666;">AUDIENCIA</span>
+                </div>
+             </div>
+             <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px;">
+                <li><span style="color: #7000ff; font-size: 20px; margin-right: 10px;">■</span><strong>45% Universitario / STEM:</strong> Alumnos técnicos y comunidades académicas.</li>
+                <li><span style="color: #00f2ff; font-size: 20px; margin-right: 10px;">■</span><strong>30% Jugador Competitivo:</strong> Equipos amateurs y entrenamientos estables.</li>
+                <li><span style="color: #1c1c24; font-size: 20px; margin-right: 10px;">■</span><strong>25% Perfil Entusiasta:</strong> Creadores de contenido y público casual premium.</li>
+             </ul>
+        </div>
+    </div>
+    <div class="slide-counter"><span>10</span> / 12</div>
+</div>
+
+<div class="slide-container" style="background-image: linear-gradient(rgba(10, 10, 12, 0.9), rgba(10, 10, 12, 0.95)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1200'); background-size: cover; background-position: center;">
+    <div class="title-layout">
+        <h2 style="font-size: 45px; color: #fff;">El Futuro de <span style="color: #00f2ff;">Vortex</span></h2>
+        <p style="max-width: 700px; margin: 30px auto; font-size: 20px; color: #e0e0e5; line-height: 1.7;">
+            Consolidar la marca como el nodo principal de los eSports de Cantabria, expandiendo el entorno físico mediante plataformas digitales automatizadas capaces de proyectar el talento local hacia ligas nacionales.
+        </p>
+    </div>
+    <div class="slide-counter"><span>11</span> / 12</div>
+</div>
+
+<div class="slide-container">
+    <div class="qa-layout">
+        <h1>?</h1>
+        <h2 style="color: #fff; font-size: 30px; margin-bottom: 25px;">¿Preparado para entrar en el <span style="color: #00f2ff;">Vortex</span>?</h2>
+        <div class="contact-info">
+            <p><i class="fa-solid fa-globe"></i>vortexhub.es</p>
+            <p><i class="fa-brands fa-discord"></i>discord.gg/vortexhub</p>
+        </div>
+    </div>
+    <div class="slide-counter"><span>12</span> / 12</div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentSlide = 0;
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            if(index === currentSlide) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+    }
+
+    nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+        updateSlides();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+        updateSlides();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextBtn.click();
+        if (e.key === 'ArrowLeft') prevBtn.click();
+    });
+</script>
+
+</body>
+</html>
