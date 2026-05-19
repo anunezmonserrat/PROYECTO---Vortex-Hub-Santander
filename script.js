@@ -28,3 +28,21 @@ window.addEventListener('scroll', function() {
         nav.style.padding = '20px 0';
     }
 });
+
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navMenu.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}

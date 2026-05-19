@@ -72,6 +72,10 @@ body {
     transition: 0.3s;
 }
 
+.nav-toggle {
+    display: none;
+}
+
 .btn-nav:hover {
     opacity: 0.8;
 }
@@ -306,7 +310,62 @@ button {
 }
 
 @media (max-width: 768px) {
-    .nav-menu { display: none; } /* Deberías añadir un menú hamburguesa luego */
+    .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .nav-container {
+        position: relative;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 12, 0.98);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-menu.active {
+        max-height: 480px;
+        padding-bottom: 10px;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu a {
+        width: 100%;
+        padding: 14px 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-menu .btn-nav {
+        width: calc(100% - 40px);
+        margin: 12px 20px;
+    }
+
     .slide-content h1 { font-size: 2rem; }
 }
 
