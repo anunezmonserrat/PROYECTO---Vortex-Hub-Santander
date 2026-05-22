@@ -1,28 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vortex Hub Santander | Pitch Presentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;family=Roboto:wght@300;400;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* CONFIGURACIÓN BASE - Corrección de Desbordamientos */
+        /* CONFIGURACIÓN BASE - Corrección de Desbordamientos y Anidamiento */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            body { 
-                background-color: #050505; 
-                color: #f5f5f5; 
-                font-family: 'Roboto', sans-serif; 
-                display: flex; 
-                justify-content: center;
-                align-items: center; 
-                min-height: 100vh;
-                padding: 40px 20px;
-                overflow: hidden !important; /* Oculta barras de scroll tanto horizontales como verticales en la slide */
-            }
+            background-color: #050505; 
+            color: #f5f5f5; 
+            font-family: 'Roboto', sans-serif; 
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow: hidden !important;
         }
         
         /* Contenedor elástico pero con topes para evitar bugs visuales */
@@ -52,7 +48,7 @@
             to { opacity: 1; }
         }
 
-        /* BOTONES DE NAVEGACIÓN CORREGIDOS (Se mantienen en sus sitios) */
+        /* BOTONES DE NAVEGACIÓN CORREGIDOS */
         .nav-btn {
             position: fixed;
             top: 50%;
@@ -116,7 +112,7 @@
         p, li { font-size: 17px; line-height: 1.6; color: #b3b3b3; font-weight: 300; z-index: 2; }
         strong { color: #fff; font-weight: 700; }
 
-        /* REJILLAS Y CONTENEDORES INTERNOS AISLADOS (EVITA MEZCLAS) */
+        /* REJILLAS Y CONTENEDORES INTERNOS AISLADOS */
         .content-area { width: 100%; z-index: 2; }
         .two-column { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; width: 100%; align-items: center; }
         
@@ -135,7 +131,7 @@
         .image-wrapper { border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 242, 255, 0.15); height: 380px; width: 100%; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Corrección drástica del diseño partido lateral */
+        /* Diseño partido lateral */
         .bleed-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 40px; align-items: center; }
 
         /* TABLAS */
@@ -169,7 +165,7 @@
         <h1>VORTEX<span>HUB</span></h1>
         <p class="subtitle">Santander | Estrategia • Rendimiento • Comunidad</p>
     </div>
-    <div class="slide-counter"><span>1</span> / 12</div>
+    <div class="slide-counter"><span>1</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -180,7 +176,7 @@
             Vortex Hub nace de la necesidad de conectar el talento universitario de Cantabria con las exigencias del alto rendimiento gaming. No somos simplemente un ciber con ordenadores; somos la central de acceso al ecosistema tecnológico del norte de España.
         </p>
     </div>
-    <div class="slide-counter"><span>2</span> / 12</div>
+    <div class="slide-counter"><span>2</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -196,11 +192,11 @@
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600" alt="Setup">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&amp;fit=crop&amp;q=80&amp;w=600" alt="Setup">
             </div>
         </div>
     </div>
-    <div class="slide-counter"><span>3</span> / 12</div>
+    <div class="slide-counter"><span>3</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -218,7 +214,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-counter"><span>4</span> / 12</div>
+    <div class="slide-counter"><span>4</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -226,9 +222,9 @@
     <div class="content-area">
         <div class="tiled-content">
             <div class="tile">
-                <div class="icon"><i class="fa-solid fa-code"></i></div>
-                <h3>Web Automática</h3>
-                <p>Altas inmediatas integradas desde la web con base de datos en la nube para agilizar el mostrador.</p>
+                <div class="icon"><i class="fa-solid fa-id-card"></i></div>
+                <h3>Membresía Recurrente</h3>
+                <p>Modelo tipo gimnasio con pagos automatizados en la nube (Stripe) para asegurar ingresos recurrentes estables el día 1 del mes.</p>
             </div>
             <div class="tile">
                 <div class="icon"><i class="fa-solid fa-envelope-open-text"></i></div>
@@ -242,7 +238,7 @@
             </div>
         </div>
     </div>
-    <div class="slide-counter"><span>5</span> / 12</div>
+    <div class="slide-counter"><span>5</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -251,15 +247,15 @@
             <div>
                 <h2 class="slide-title" style="margin-bottom: 25px;">El Nodo Físico</h2>
                 <h3 style="color: #7000ff; margin-bottom: 15px; font-size: 20px;">Santander, Cantabria</h3>
-                <p style="margin-bottom: 15px;">Ubicados estratégicamente para dar soporte tanto al centro urbano como a toda la comunidad estudiantil de la Universidad de Cantabria.</p>
-                <p>Un espacio climatizado, ergonómico y diseñado estructuralmente para emular el despliegue de las arenas competitivas internacionales.</p>
+                <p style="margin-bottom: 15px;"><strong>Local de 173 m² identificado en fase de reserva</strong>, ubicado estratégicamente en la Avenida de los Castros, directamente frente a la Facultad de Derecho y Ciencias Económicas.</p>
+                <p>Espacio con infraestructura preexistente de hostelería (antiguo bar), lo que reduce el CAPEX de reforma en un 60% y permite un despliegue ágil sin necesidad de salida de humos industrial.</p>
             </div>
             <div class="image-wrapper">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600" alt="Santander">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;q=80&amp;w=600" alt="Santander">
             </div>
         </div>
     </div>
-    <div class="slide-counter"><span>6</span> / 12</div>
+    <div class="slide-counter"><span>6</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -267,20 +263,20 @@
     <div class="content-area">
         <div class="tiled-content">
             <div class="tile" style="padding: 15px; background: transparent; border: none;">
-                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=400" alt="1"></div>
-                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Torneos de Comunidad</h4>
+                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="1"></div>
+                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Comunidad y Eventos</h4>
             </div>
             <div class="tile" style="padding: 15px; background: transparent; border: none;">
-                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&q=80&w=400" alt="2"></div>
-                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Entrenamiento de Clubes</h4>
+                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="2"></div>
+                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Alta Rentabilidad F&B</h4>
             </div>
             <div class="tile" style="padding: 15px; background: transparent; border: none;">
-                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400" alt="3"></div>
-                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Desarrollo Universitario</h4>
+                <div class="image-wrapper" style="height: 250px;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="3"></div>
+                <h4 style="margin-top: 15px; font-size: 15px; color: #00f2ff;">Validación y Convenios UC</h4>
             </div>
         </div>
     </div>
-    <div class="slide-counter"><span>7</span> / 12</div>
+    <div class="slide-counter"><span>7</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -318,7 +314,7 @@
             </tbody>
         </table>
     </div>
-    <div class="slide-counter"><span>8</span> / 12</div>
+    <div class="slide-counter"><span>8</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -328,20 +324,20 @@
             <svg class="area-chart-svg" viewBox="0 0 1000 320">
                 <defs>
                     <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#00f2ff" />
-                        <stop offset="100%" stop-color="#7000ff" stop-opacity="0" />
+                        <stop offset="0%" stop-color="#00f2ff"></stop>
+                        <stop offset="100%" stop-color="#7000ff" stop-opacity="0"></stop>
                     </linearGradient>
                 </defs>
-                <path class="area-fill" d="M 50,260 L 220,220 L 410,180 L 600,160 L 780,100 L 950,40 L 950,280 L 50,280 Z" />
-                <polyline class="line-stroke" points="50,260 220,220 410,180 600,160 780,100 950,40" />
-                <text x="50" y="300" fill="#666" font-family='Orbitron' font-size='14'>2024 (143M€)</text>
-                <text x="900" y="300" fill="#00f2ff" font-family='Orbitron' font-size='14'>2032 (242M€)</text>
-                <line x1="50" y1="280" x2="950" y2="280" stroke="#1a1a1f" stroke-width="2"/>
+                <path class="area-fill" d="M 50,260 L 220,220 L 410,180 L 600,160 L 780,100 L 950,40 L 950,280 L 50,280 Z"></path>
+                <polyline class="line-stroke" points="50,260 220,220 410,180 600,160 780,100 950,40"></polyline>
+                <text x="50" y="300" fill="#666" font-family="Orbitron" font-size="14">2024 (143M€)</text>
+                <text x="900" y="300" fill="#00f2ff" font-family="Orbitron" font-size="14">2032 (242M€)</text>
+                <line x1="50" y1="280" x2="950" y2="280" stroke="#1a1a1f" stroke-width="2"></line>
             </svg>
             <p style="text-align: center; margin-top: 15px; font-size: 14px; color: #888;">Crecimiento anual compuesto proyectado (CAGR) del 6.8% en el sector gaming.</p>
         </div>
     </div>
-    <div class="slide-counter"><span>9</span> / 12</div>
+    <div class="slide-counter"><span>9</span> / 13</div>
 </div>
 
 <div class="slide-container">
@@ -360,29 +356,51 @@
              </ul>
         </div>
     </div>
-    <div class="slide-counter"><span>10</span> / 12</div>
+    <div class="slide-counter"><span>10</span> / 13</div>
 </div>
 
-<div class="slide-container" style="background-image: linear-gradient(rgba(10, 10, 12, 0.9), rgba(10, 10, 12, 0.95)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1200'); background-size: cover; background-position: center;">
+<div class="slide-container">
+    <h2 class="slide-title">Fase Actual: Validación de Mercado</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 19px; margin-bottom: 20px;">Lanzamiento de campaña MVP (Mínimo Producto Viable) dirigida al campus de Los Castros:</p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px;">
+                    <li><i class="fa-solid fa-filter" style="color:#00f2ff; margin-right: 12px;"></i><strong>Estrategia de Captación:</strong> Conversión directa mediante la oferta "1ª Hora Gratis" validada con el correo institucional de la UC.</li>
+                    <li><i class="fa-solid fa-users-viewfinder" style="color:#00f2ff; margin-right: 12px;"></i><strong>Construcción de Lista de Espera:</strong> Medición en tiempo real del interés y del volumen de usuarios recurrentes antes de la apertura física.</li>
+                    <li><i class="fa-solid fa-handshake" style="color:#00f2ff; margin-right: 12px;"></i><strong>Alianzas Académicas:</strong> Co-diseño de talleres de Soft Skills y formación Tech junto al tejido universitario.</li>
+                </ul>
+            </div>
+            <div class="tile" style="background: #141419; border: 2px dashed #00f2ff; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px;">
+                <i class="fa-solid fa-qrcode" style="font-size: 80px; color: #00f2ff; margin-bottom: 20px;"></i>
+                <h3 style="color: #fff;">Métrica de Éxito</h3>
+                <p style="text-align: center; font-size: 15px; margin-top: 10px;">El objetivo es alcanzar los primeros 200 usuarios registrados con cuenta institucional para activar la ejecución de la inversión con riesgo comercial cero.</p>
+            </div>
+        </div>
+    </div>
+    <div class="slide-counter"><span>11</span> / 13</div>
+</div>
+
+<div class="slide-container" style="background-image: linear-gradient(rgba(10, 10, 12, 0.9), rgba(10, 10, 12, 0.95)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&amp;fit=crop&amp;q=80&amp;w=1200'); background-size: cover; background-position: center;">
     <div class="title-layout">
         <h2 style="font-size: 45px; color: #fff;">El Futuro de <span style="color: #00f2ff;">Vortex</span></h2>
         <p style="max-width: 700px; margin: 30px auto; font-size: 20px; color: #e0e0e5; line-height: 1.7;">
             Consolidar la marca como el nodo principal de los eSports de Cantabria, expandiendo el entorno físico mediante plataformas digitales automatizadas capaces de proyectar el talento local hacia ligas nacionales.
         </p>
     </div>
-    <div class="slide-counter"><span>11</span> / 12</div>
+    <div class="slide-counter"><span>12</span> / 13</div>
 </div>
 
 <div class="slide-container">
-    <div class="qa-layout">
-        <h1>?</h1>
+    <div class="qa-layout" style="text-align: center; margin: auto;">
+        <h1 style="font-size: 100px; margin-bottom: 10px;">?</h1>
         <h2 style="color: #fff; font-size: 30px; margin-bottom: 25px;">¿Preparado para entrar en el <span style="color: #00f2ff;">Vortex</span>?</h2>
-        <div class="contact-info">
-            <p><i class="fa-solid fa-globe"></i>vortexhub.es</p>
-            <p><i class="fa-brands fa-discord"></i>discord.gg/vortexhub</p>
+        <div class="contact-info" style="display: flex; justify-content: center; gap: 30px; font-family: 'Orbitron';">
+            <p><i class="fa-solid fa-globe" style="color: #00f2ff; margin-right: 8px;"></i>vortexhub.es</p>
+            <p><i class="fa-brands fa-discord" style="color: #00f2ff; margin-right: 8px;"></i>discord.gg/vortexhub</p>
         </div>
     </div>
-    <div class="slide-counter"><span>12</span> / 12</div>
+    <div class="slide-counter"><span>13</span> / 13</div>
 </div>
 
 <script>
@@ -417,5 +435,4 @@
     });
 </script>
 
-</body>
-</html>
+</body></html>
